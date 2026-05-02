@@ -1,16 +1,16 @@
 # Azure Container Instances (microsoft-azure-container-instances)
-Azure Container Instances REST API enables running Docker containers on-demand without managing infrastructure. It supports creating container groups, configuring networking, mounting volumes, setting resource limits, and retrieving container logs.
+Azure Container Instances offers the fastest and simplest way to run containers in Azure without managing virtual machines or higher-level orchestrators. This collection captures the REST API surface for creating container groups, configuring networking and storage, and operating serverless containers on demand.
 
 **URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/microsoft-azure-container-instances/refs/heads/main/apis.yml)
 
 ## Tags:
 
- - Containers, Serverless Containers, Docker, Container Groups
+ - Container Groups, Containers, Docker, Serverless Containers
 
 ## Timestamps
 
 - **Created:** 2026-03-13
-- **Modified:** 2026-03-13
+- **Modified:** 2026-04-28
 
 ## APIs
 

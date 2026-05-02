@@ -30,10 +30,12 @@ common:
     url: https://privacy.microsoft.com/en-us/privacystatement
   - type: Support
     url: https://support.microsoft.com/
-modified: '2026-03-16'
+modified: '2026-04-28'
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 description: >-
-  Learn how Azure Container Instances offers the fastest and simplest way to run a
-  container in Azure.
+  Azure Container Instances offers the fastest and simplest way to run containers
+  in Azure without managing virtual machines or higher-level orchestrators. This
+  collection captures the REST API surface for creating container groups, configuring
+  networking and storage, and operating serverless containers on demand.
