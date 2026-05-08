@@ -12,6 +12,8 @@ apis:
     baseURL: https://management.azure.com/
     humanURL: https://learn.microsoft.com/en-us/rest/api/container-instances/
     properties:
+      - url: openapi/microsoft-azure-container-instances-openapi.yml
+        type: OpenAPI
       - url: https://learn.microsoft.com/en-us/rest/api/container-instances/
         type: Documentation
     description: >-
