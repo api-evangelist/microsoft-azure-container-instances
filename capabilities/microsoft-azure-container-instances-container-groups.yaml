@@ -1,0 +1,230 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Azure Container Instances REST API — Container Groups
+  description: 'Azure Container Instances REST API — Container Groups. 6 operations. Lead operation: Azure Container Instances
+    REST API List by subscription. Self-contained Naftiko capability covering one Microsoft Azure Container Instances business
+    surface.'
+  tags:
+  - Microsoft Azure Container Instances
+  - Container Groups
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_AZURE_CONTAINER_INSTANCES_API_KEY: MICROSOFT_AZURE_CONTAINER_INSTANCES_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: microsoft-azure-container-instances-container-groups
+    baseUri: https://management.azure.com
+    description: Azure Container Instances REST API — Container Groups business capability. Self-contained, no shared references.
+    resources:
+    - name: subscriptions-subscriptionId-providers-Microsoft.ContainerInstance-containerGrou
+      path: /subscriptions/{subscriptionId}/providers/Microsoft.ContainerInstance/containerGroups
+      operations:
+      - name: listcontainergroupsbysubscription
+        method: GET
+        description: Azure Container Instances REST API List by subscription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups
+      operations:
+      - name: listcontainergroupsbyresourcegroup
+        method: GET
+        description: Azure Container Instances REST API List by resource group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof
+      path: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerInstance/containerGroups/{name}
+      operations:
+      - name: getcontainergroups
+        method: GET
+        description: Azure Container Instances REST API Get resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createorupdatecontainergroups
+        method: PUT
+        description: Azure Container Instances REST API Create or update resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: updatecontainergroups
+        method: PATCH
+        description: Azure Container Instances REST API Update resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletecontainergroups
+        method: DELETE
+        description: Azure Container Instances REST API Delete resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_AZURE_CONTAINER_INSTANCES_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: microsoft-azure-container-instances-container-groups-rest
+    port: 8080
+    description: REST adapter for Azure Container Instances REST API — Container Groups. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/subscriptions/{subscriptionid}/providers/microsoft-containerinstance/containergroups
+      name: subscriptions-subscriptionid-providers-microsoft-containerinstance-containergrou
+      description: REST surface for subscriptions-subscriptionId-providers-Microsoft.ContainerInstance-containerGrou.
+      operations:
+      - method: GET
+        name: listcontainergroupsbysubscription
+        description: Azure Container Instances REST API List by subscription
+        call: microsoft-azure-container-instances-container-groups.listcontainergroupsbysubscription
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-containerinstance/containergroups
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: GET
+        name: listcontainergroupsbyresourcegroup
+        description: Azure Container Instances REST API List by resource group
+        call: microsoft-azure-container-instances-container-groups.listcontainergroupsbyresourcegroup
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/subscriptions/{subscriptionid}/resourcegroups/{resourcegroupname}/providers/microsoft-containerinstance/containergroups/{name}
+      name: subscriptions-subscriptionid-resourcegroups-resourcegroupname-providers-microsof
+      description: REST surface for subscriptions-subscriptionId-resourceGroups-resourceGroupName-providers-Microsof.
+      operations:
+      - method: GET
+        name: getcontainergroups
+        description: Azure Container Instances REST API Get resource
+        call: microsoft-azure-container-instances-container-groups.getcontainergroups
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: createorupdatecontainergroups
+        description: Azure Container Instances REST API Create or update resource
+        call: microsoft-azure-container-instances-container-groups.createorupdatecontainergroups
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatecontainergroups
+        description: Azure Container Instances REST API Update resource
+        call: microsoft-azure-container-instances-container-groups.updatecontainergroups
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecontainergroups
+        description: Azure Container Instances REST API Delete resource
+        call: microsoft-azure-container-instances-container-groups.deletecontainergroups
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: microsoft-azure-container-instances-container-groups-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Azure Container Instances REST API — Container Groups. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: azure-container-instances-rest-api
+      description: Azure Container Instances REST API List by subscription
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-azure-container-instances-container-groups.listcontainergroupsbysubscription
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-container-instances-rest-api-2
+      description: Azure Container Instances REST API List by resource group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-azure-container-instances-container-groups.listcontainergroupsbyresourcegroup
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-container-instances-rest-api-3
+      description: Azure Container Instances REST API Get resource
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-azure-container-instances-container-groups.getcontainergroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-container-instances-rest-api-4
+      description: Azure Container Instances REST API Create or update resource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: microsoft-azure-container-instances-container-groups.createorupdatecontainergroups
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-container-instances-rest-api-5
+      description: Azure Container Instances REST API Update resource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: microsoft-azure-container-instances-container-groups.updatecontainergroups
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: azure-container-instances-rest-api-6
+      description: Azure Container Instances REST API Delete resource
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: microsoft-azure-container-instances-container-groups.deletecontainergroups
+      outputParameters:
+      - type: object
+        mapping: $.
