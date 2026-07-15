@@ -21,6 +21,8 @@ apis:
       supports creating container groups, configuring networking, mounting volumes, setting resource limits, and
       retrieving container logs.
 common:
+  - type: AgenticAccess
+    url: agentic-access/microsoft-azure-container-instances-agentic-access.yml
   - type: DomainSecurity
     url: security/microsoft-azure-container-instances-domain-security.yml
   - type: Authentication
