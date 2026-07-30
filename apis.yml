@@ -1,25 +1,45 @@
 aid: microsoft-azure-container-instances
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/microsoft-azure-container-instances.png
 url: https://raw.githubusercontent.com/api-evangelist/microsoft-azure-container-instances/refs/heads/main/apis.yml
 apis:
-  - aid: microsoft-azure-container-instances:rest-api
-    name: Azure Container Instances REST API
-    tags:
-      - Container Groups
-      - Containers
-      - Docker
-      - Serverless Containers
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    baseURL: https://management.azure.com/
-    humanURL: https://learn.microsoft.com/en-us/rest/api/container-instances/
-    properties:
-      - url: openapi/microsoft-azure-container-instances-openapi.yml
-        type: OpenAPI
-      - url: https://learn.microsoft.com/en-us/rest/api/container-instances/
-        type: Documentation
-    description: >-
-      Azure Container Instances REST API enables running Docker containers on-demand without managing infrastructure. It
-      supports creating container groups, configuring networking, mounting volumes, setting resource limits, and
-      retrieving container logs.
+- aid: >-
+    microsoft-azure-container-instances:microsoft-azure-container-instances-container-groups-api
+  name: microsoft-azure-container-instances Container Groups API
+  description: Container Groups operations
+  humanURL: https://learn.microsoft.com/en-us/rest/api/container-instances/
+  baseURL: https://management.azure.com/
+  tags:
+  - Container Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-azure-container-instances-container-groups-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/container-instances/
+- aid: microsoft-azure-container-instances:microsoft-azure-container-instances-operations-api
+  name: microsoft-azure-container-instances Operations API
+  description: Operations operations
+  humanURL: https://learn.microsoft.com/en-us/rest/api/container-instances/
+  baseURL: https://management.azure.com/
+  tags:
+  - Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-azure-container-instances-operations-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/container-instances/
 common:
   - type: AgenticAccess
     url: agentic-access/microsoft-azure-container-instances-agentic-access.yml
