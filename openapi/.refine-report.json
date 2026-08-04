@@ -1,0 +1,16 @@
+{
+  "provider": "microsoft-azure-container-instances",
+  "sources": [
+    "microsoft-azure-container-instances-container-groups-api-openapi.yml",
+    "microsoft-azure-container-instances-operations-api-openapi.yml"
+  ],
+  "outputs": [
+    "microsoft-azure-container-instances-container-groups-api-openapi.yml",
+    "microsoft-azure-container-instances-operations-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
