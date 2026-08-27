@@ -1,4 +1,5 @@
 aid: microsoft-azure-container-instances
+name: "Azure Container Instances"
 specificationVersion: '0.23'
 accessModel:
   pricing: freemium
